@@ -10,23 +10,24 @@
  * Return: return failure return sucess if the node created 
  */
 
-binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
+binary_tree_t *
+binary_tree_insert_left (binary_tree_t * parent, int value)
 {
-	binary_tree_t *nn = NULL;
+  binary_tree_t *nn = NULL;
 
-	if (parent != NULL)
+  if (parent != NULL)
+    {
+      nn = malloc (sizeof (binary_tree_t));
+      if (nn != NULL)
 	{
-		nn = malloc(sizeof(binary_tree_t));
-		if (nn != NULL)
-		{
-			nn->left = parent->left;
-			nn->right = NULL;
-			nn->parent = parent;
-			nn->n = value;
-			if (parent->left != NULL)
-				parent->left->parent = nn;
-			parent->left = nn;
-		}
+	  nn->left = parent->left;
+	  nn->right = NULL;
+	  nn->parent = parent;
+	  nn->n = value;
+	  if (parent->left != NULL)
+	    parent->left->parent = nn;
+	  parent->left = nn;
 	}
-	return (nn);
+    }
+  return (nn);
 
